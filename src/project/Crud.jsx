@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Form } from "./form";
+import { AllData } from "./AllData";
 export const Crud = () => {
     const [task , setTask] = useState([]);
     const [datetime , setDateTime] = useState('');
@@ -27,12 +28,14 @@ export const Crud = () => {
             <section>
                 <ul>
                     {
-                        task.map((curtask) => {
-                        return <li key={curtask}>
-                                    {curtask}
-                                    <button>ok</button>
-                                    <button onClick={ ()=> {handleDeleteButtons(curtask)}}>Delete</button>
-                                </li>
+                        task.map((curtask, index) => {
+                        return (
+                            <AllData 
+                                keydata={index}
+                                data={curtask}
+                                handleDeleteButtons={handleDeleteButtons}
+                            />
+                        )
                         })
                     }
                 </ul>
