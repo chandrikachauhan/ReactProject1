@@ -21,6 +21,7 @@
     font-size: 18px;
     font-family: bold;
     position: relative;
+    cursor: pointer;
     top: 10px;
     left: 10px;
 }
@@ -33,4 +34,12 @@
 }
 .off{
     transform: translateX(0px);
+}
+section{
+    text-align: center;
+}
+section input{
+    height: 30px;
+    margin:20px;
+    text-align: center;
 }

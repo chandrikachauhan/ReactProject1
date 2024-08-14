@@ -1,4 +1,5 @@
 import {State} from './Components/Hooks/State'
+import { Crud } from './project/crud'
 import { Toggle } from './project/Toggle'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <State/>
       <Toggle />
+      <Crud/>
     </>
   )
 }
