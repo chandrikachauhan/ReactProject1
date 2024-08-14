@@ -1,26 +1,17 @@
 import { useState } from "react"
+import { Form } from "./form";
 export const Crud = () => {
-    const [InputValue , setInputValue] = useState([]);
-    const [task , setTask] = useState(InputValue);
+    const [task , setTask] = useState([]);
     const [datetime , setDateTime] = useState('');
     const settime = setTimeout(() => {
+        const now =new Date();
         const date = now.toLocaleDateString();
         const time = now.toLocaleTimeString(); 
         setDateTime(`${date} ${time}`);
     }, 1000);
-    const now =new Date();
-    const handleInputChange = (value) =>{
-        setInputValue(value.target.value);
-    };
-    const handleFormSubmit = (events)=>{
-        events.preventDefault();
+    const handleFormSubmit = (InputValue)=>{
         if(!InputValue) return;
-        if(task.includes(InputValue))
-        {
-            setInputValue("");
-            return;
-        }
-        setInputValue("");
+        if(task.includes(InputValue))return;
         setTask((prevTask) => [...prevTask, InputValue]);
     }
     const handleDeleteButtons = (data)=>{
@@ -32,18 +23,7 @@ export const Crud = () => {
         <section>
             <h3>PerForm Crud Opration</h3>
             <h3>{datetime}</h3>
-            <section>
-                <form onSubmit={handleFormSubmit}>
-                    <input 
-                        name="userName"
-                        type="text"
-                        placeholder="Enter Name"
-                        value={InputValue}
-                        onChange={handleInputChange}
-                     /><br/>
-                    <button type="submit">Save</button>
-                </form>
-            </section>
+            <Form addData ={handleFormSubmit}/>
             <section>
                 <ul>
                     {
